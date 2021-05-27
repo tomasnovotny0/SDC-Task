@@ -27,6 +27,11 @@ public class Main {
 		
 	}
 	
+	/**
+	 * Attempts to read excel sheet from specific file
+	 * @param file File to read
+	 * @throws IOException When file cannot be read
+	 */
 	private static void readDataFile(File file) throws IOException {
 		FileInputStream inputStream = new FileInputStream(file);
 		XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
@@ -41,6 +46,11 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Find column which contains data
+	 * @param row Starting row
+	 * @return Column index with data or -1 when no data are found
+	 */
 	private static int findColumnWithData(XSSFRow row) {
 		for (Cell cell : row) {
 			if (cell == null) continue;
@@ -52,6 +62,10 @@ public class Main {
 		return -1;
 	}
 	
+	/**
+	 * Checks if cell value is a prime number
+	 * @param cell Cell which is being checked
+	 */
 	private static void checkCellForPrime(Cell cell) {
 		String value = cell.getStringCellValue();
 		int number;

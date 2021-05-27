@@ -2,6 +2,11 @@ package sdc;
 
 public final class PrimeNumberHelper {
 
+	/**
+	 * Check if specified number is a prime number
+	 * @param number Number to check
+	 * @return whether number is prime
+	 */
 	public static boolean isPrimeNumber(int number) {
 		if (number < 3) {
 			return number == 2;
