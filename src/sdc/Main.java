@@ -2,7 +2,7 @@ package sdc;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;import org.apache.poi.ss.format.CellDateFormatter;
+import java.io.IOException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -39,11 +39,14 @@ public class Main {
 		int rowIndex = 0;
 		XSSFRow row = sheet.getRow(rowIndex);
 		int columnDataIndex = findColumnWithData(row);
-		if (columnDataIndex < 0)
+		if (columnDataIndex < 0) {
+			workbook.close();
 			throw new IllegalStateException("Couldn't locate data");
+		}
 		while ((row = sheet.getRow(++rowIndex)) != null) {
 			checkCellForPrime(row.getCell(columnDataIndex));
 		}
+		workbook.close();
 	}
 	
 	/**
